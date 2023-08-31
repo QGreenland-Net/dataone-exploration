@@ -1,0 +1,5 @@
+name: dataone
+dependencies:
+  - pip
+  - pip:
+    - dataone.libclient
