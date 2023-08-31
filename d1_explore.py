@@ -27,6 +27,13 @@ def query(client: DataONEClient, query: str):
     """Execute a query.
 
     How is this different than a search?
+
+    From: https://releases.dataone.org/online/api-documentation-v2.0.1/apis/CN_APIs.html#CNRead.query
+        * CNRead.query: Submit a query against the specified queryEngine and return the
+          response as formatted by the queryEngine
+        * CNRead.search: Search the metadata catalog and return identifiers of metadata
+          records that match the criteria.
+
     """
     # This method is not in the Python API.
     # https://releases.dataone.org/online/api-documentation-v2.0.1/apis/CN_APIs.html#CNRead.listQueryEngines
@@ -41,7 +48,12 @@ def query(client: DataONEClient, query: str):
     #         <queryEngine>logsolr</queryEngine>
     #     </ns2:queryEngineList>
 
-    results = client.query(queryEngine="solr", query=query)
+    results = client.query(queryEngine="solr", query_str=query)
+    # d1_common.types.exceptions.ServiceFailure: name: ServiceFailure
+    # errorCode: 500
+    # detailCode: <unset>
+    # description: Response did not contain the expected Content-Type
+
     return results
 
 
@@ -52,11 +64,11 @@ if __name__ == "__main__":
 
     print(f"Some DataONE nodes: {list_node_descriptions(client)[:3]}")
 
-    # This doesn't return relevant results we expect
+    # This doesn't return relevant results we expect. Always the same 10 rows.
     # Based on example: https://opc.dataone.org/api
     search_results = search(client, query="q=title:soil")
-    ...
 
+    # This errors.
     query_results = query(client, query="q=title:soil")
     breakpoint()
     ...
