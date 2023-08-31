@@ -42,8 +42,8 @@ for a full listing.
 
 #### Questions
 
-* `d1baseclient` doesn't have `listQueryEngines`. Do we need to use `cnclient` to do
-  `listQueryEngines`?
+* None of the clients have `listQueryEngines` method (`curl
+  https://cn.dataone.org/cn/v1/query`).
 
 
 ## Ideas
