@@ -48,11 +48,15 @@ def query(client: DataONEClient, query: str):
     #         <queryEngine>logsolr</queryEngine>
     #     </ns2:queryEngineList>
 
+    # The docs are very clear that `query` is the correct parameter name, but in
+    # reality it's `query_str`.
+    #     https://dataone-python.readthedocs.io/en/latest/d1_client/api/d1_client.html?highlight=query#d1_client.cnclient.CoordinatingNodeClient.query
     results = client.query(queryEngine="solr", query_str=query)
-    # d1_common.types.exceptions.ServiceFailure: name: ServiceFailure
-    # errorCode: 500
-    # detailCode: <unset>
-    # description: Response did not contain the expected Content-Type
+    # ERROR:
+    #     d1_common.types.exceptions.ServiceFailure: name: ServiceFailure
+    #     errorCode: 500
+    #     detailCode: <unset>
+    #     description: Response did not contain the expected Content-Type
 
     return results
 

@@ -34,7 +34,10 @@ for a full listing.
 
 ### Python Client library
 
-* [Official docs](https://pythonhosted.org/DataONE_ClientLib/index.html)
+* [Official docs](https://dataone-python.readthedocs.io/en/latest/d1_client/index.html)
+
+> :warning: BEWARE of a second copy of the docs at pythonhosted.org; they are
+> significantly less useful than the ReadTheDocs site above.
 
 
 #### Questions
