@@ -1,7 +1,7 @@
 """A lazy exploration of the DataONE Python API."""
 from d1_client.cnclient import CoordinatingNodeClient
+from d1_client.d1client import DataONEClient
 from d1_client.mnclient import MemberNodeClient
-from d2_client.d1client import DataONEClient
 
 
 def list_node_descriptions(client: DataONEClient) -> list[str]:
@@ -42,7 +42,6 @@ def query(client: DataONEClient, query: str):
     #     </ns2:queryEngineList>
 
     results = client.query(queryEngine="solr", query=query)
-    breakpoint()
     return results
 
 
@@ -50,7 +49,6 @@ if __name__ == "__main__":
     client = DataONEClient()
     cnclient = CoordinatingNodeClient()
     mnclient = MemberNodeClient()
-    breakpoint()
 
     print(f"Some DataONE nodes: {list_node_descriptions(client)[:3]}")
 
