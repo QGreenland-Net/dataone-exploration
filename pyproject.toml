@@ -1,0 +1,38 @@
+[tool.black]
+target-version = ["py311"]
+
+
+[tool.vulture]
+min_confidence = 80
+
+
+[tool.ruff]
+target-version = "py311"
+select = [
+  "F",
+  "E",
+  "W",
+  "C4",
+  "C90",
+  "I",
+  "N",
+  "D",
+  "UP",
+  "YTT",
+  "B",
+  "A",
+  "C4",
+  "T10",
+  "RUF",
+]
+
+ignore = [
+  # D203: "1 blank line required before class docstring"
+  # D213: "Multi-line docstring summary should start at the second line"
+  # E731: Lambda assignments are OK, use your best judgement.
+  # RUF010: !a, !r, !s are too magical for me.
+  "D203", "D213", "E731", "RUF010",
+]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "double"

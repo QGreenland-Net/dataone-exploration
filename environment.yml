@@ -1,5 +1,7 @@
 name: dataone
 dependencies:
+  - pre-commit
+
   - pip
   - pip:
     - dataone.libclient
